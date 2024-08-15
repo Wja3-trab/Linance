@@ -4,34 +4,34 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class AccountHolderId implements Serializable {
-    private Long userId;
-    private Long accountId;
+    private Long user;
+    private Long account;
 
     // Default constructor
     public AccountHolderId() {
     }
 
     // Parameterized constructor
-    public AccountHolderId(Long userId, Long accountId) {
-        this.userId = userId;
-        this.accountId = accountId;
+    public AccountHolderId(Long user, Long account) {
+        this.user = user;
+        this.account = account;
     }
 
     // Getters and setters
-    public Long getUserId() {
-        return userId;
+    public Long getuser() {
+        return user;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setuser(Long user) {
+        this.user = user;
     }
 
-    public Long getAccountId() {
-        return accountId;
+    public Long getaccount() {
+        return account;
     }
 
-    public void setAccountId(Long accountId) {
-        this.accountId = accountId;
+    public void setaccount(Long account) {
+        this.account = account;
     }
 
     @Override
@@ -39,12 +39,12 @@ public class AccountHolderId implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AccountHolderId that = (AccountHolderId) o;
-        return Objects.equals(userId, that.userId) &&
-                Objects.equals(accountId, that.accountId);
+        return Objects.equals(user, that.user) &&
+                Objects.equals(account, that.account);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, accountId);
+        return Objects.hash(user, account);
     }
 }
