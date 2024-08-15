@@ -6,39 +6,46 @@ import jakarta.persistence.*;
 @Entity(name = "accountholders")
 @IdClass(AccountHolderId.class)
 public class Holder {
+
     @Id
     @ManyToOne
     @JoinColumn(name = "userid", referencedColumnName = "id")
     private User user;
+
     @Id
     @ManyToOne
     @JoinColumn(name = "accountid", referencedColumnName = "id")
     private Account account;
+
+    @Enumerated(EnumType.STRING)
     @Column(name = "type")
     private HolderType type;
 
-    public Holder() {
-    }
+    // Default constructor
+    public Holder() {}
 
-    public Holder(User user, Account account) {
+    // Parameterized constructor
+    public Holder(User user, Account account, HolderType type) {
         this.user = user;
         this.account = account;
+        this.type = type;
     }
 
+    // Getters and setters
     public User getUser() {
         return user;
     }
 
-    public void setUser(User userID) {
-        this.user = userID;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Account getAccount() {
         return account;
     }
 
-    public void setAccount(Account accountID) {
-        this.account = accountID;
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public HolderType getType() {
