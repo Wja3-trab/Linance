@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Entity(name = "accounts")
 public class Account {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int accountId;
     @Column(name = "accountnumber")

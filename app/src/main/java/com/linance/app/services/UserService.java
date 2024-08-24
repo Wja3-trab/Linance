@@ -40,11 +40,10 @@ public class UserService {
             user.setFirstname(voornaam);
             user.setLastname(achternaam);
             user.setEmail(email);
-            String pswrd = passwordEncoder.encode(password);
-            user.setPassword(pswrd);
+            user.setPassword(passwordEncoder.encode(password));
             userRepository.save(user);
         } catch (Exception e) {
-            System.err.println(e);
+            System.err.println(e.getMessage());
         }
     }
 

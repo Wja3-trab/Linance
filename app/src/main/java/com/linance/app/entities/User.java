@@ -1,15 +1,13 @@
 package com.linance.app.entities;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.Fetch;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity(name = "Users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int userID;
     @Column(name = "voornaam")
@@ -73,6 +71,10 @@ public class User {
 
     public LocalDateTime getCreateDate() {
         return createDate;
+    }
+
+    public String getDetailsUser() {
+        return "Id: " + this.getUserID() + ", FullName: " + (this.getFirstname().concat(" " + this.getLastname())) + ", Email: " + this.getEmail();
     }
 
     public void setCreateDate(LocalDateTime createDate) {
