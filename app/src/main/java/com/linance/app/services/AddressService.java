@@ -66,4 +66,17 @@ public class AddressService {
             System.err.println(e.getMessage());
         }
     }
+
+    @Transactional
+    public void deleteAddress(User user) {
+        try {
+            if (addressRepository.findByUser(user) == null) {
+                throw AddressNotFoundException.of(user.getDetailsUser());
+            }
+            Address address = addressRepository.findByUser(user);
+            addressRepository.delete(address);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
 }
