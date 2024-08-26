@@ -25,17 +25,21 @@ public class Transaction {
     @ManyToOne
     @JoinColumn(name = "recurringtransactionid")
     private RecurringTransaction recurringTransaction;
+    @ManyToOne
+    @JoinColumn(name = "recipient")
+    private Recipient recipient;
 
     public Transaction() {
     }
 
-    public Transaction(Account accountId, double amount, TransactionType transactionType, LocalDateTime transactionDate, String description, RecurringTransaction recurringTransaction) {
+    public Transaction(Account accountId, double amount, TransactionType transactionType, LocalDateTime transactionDate, String description, RecurringTransaction recurringTransaction, Recipient recipient) {
         this.accountId = accountId;
         this.amount = amount;
         this.transactionType = transactionType;
         this.transactionDate = transactionDate;
         this.description = description;
         this.recurringTransaction = recurringTransaction;
+        this.recipient = recipient;
     }
 
     public int getTransactionId() {
@@ -88,5 +92,13 @@ public class Transaction {
 
     public void setRecurringTransaction(RecurringTransaction recurringTransaction) {
         this.recurringTransaction = recurringTransaction;
+    }
+
+    public Recipient getRecipient() {
+        return recipient;
+    }
+
+    public void setRecipient(Recipient recipient) {
+        this.recipient = recipient;
     }
 }

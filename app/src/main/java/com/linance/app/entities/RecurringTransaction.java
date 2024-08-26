@@ -28,11 +28,14 @@ public class RecurringTransaction {
     private LocalDate nextRunDate;
     @Column(name = "lastrundate")
     private LocalDate lastRunDate;
+    @ManyToOne
+    @JoinColumn(name = "recipient")
+    private Recipient recipient;
 
     public RecurringTransaction() {
     }
 
-    public RecurringTransaction(Account account, double amount, LocalDate startDate, LocalDate endDate, IntervalType intervalType, Integer occurrence, LocalDate nextRunDate, LocalDate lastRunDate) {
+    public RecurringTransaction(Account account, double amount, LocalDate startDate, LocalDate endDate, IntervalType intervalType, Integer occurrence, LocalDate nextRunDate, LocalDate lastRunDate, Recipient recipient) {
         this.account = account;
         this.amount = amount;
         this.startDate = startDate;
@@ -41,6 +44,7 @@ public class RecurringTransaction {
         this.occurrence = occurrence;
         this.nextRunDate = nextRunDate;
         this.lastRunDate = lastRunDate;
+        this.recipient = recipient;
     }
 
     public int getRecurringTransactionId() {
@@ -109,5 +113,13 @@ public class RecurringTransaction {
 
     public void setLastRunDate(LocalDate lastRunDate) {
         this.lastRunDate = lastRunDate;
+    }
+
+    public Recipient getRecipient() {
+        return recipient;
+    }
+
+    public void setRecipient(Recipient recipient) {
+        this.recipient = recipient;
     }
 }

@@ -1,6 +1,7 @@
 package com.linance.app.services;
 
 import com.linance.app.entities.Account;
+import com.linance.app.entities.Recipient;
 import com.linance.app.entities.RecurringTransaction;
 import com.linance.app.enumerators.IntervalType;
 import com.linance.app.repositories.RecurringTransactionRepository;
@@ -36,7 +37,7 @@ public class RecurringTransactionService {
     }
 
     @Transactional
-    public void createRecurringTransaction(Account account, double amount, LocalDate startDate, LocalDate endDate, IntervalType intervalType, Integer occurrence, LocalDate nextRunDate, LocalDate lastRunDate) {
+    public void createRecurringTransaction(Account account, double amount, LocalDate startDate, LocalDate endDate, IntervalType intervalType, Integer occurrence, LocalDate nextRunDate, LocalDate lastRunDate, Recipient recipient) {
         try {
             RecurringTransaction recurringTransaction = new RecurringTransaction();
             recurringTransaction.setAccount(account);
@@ -47,6 +48,7 @@ public class RecurringTransactionService {
             recurringTransaction.setOccurrence(occurrence);
             recurringTransaction.setNextRunDate(nextRunDate);
             recurringTransaction.setLastRunDate(lastRunDate);
+            recurringTransaction.setRecipient(recipient);
             recurringTransactionRepository.save(recurringTransaction);
         } catch (Exception e) {
             System.err.println(e.getMessage());

@@ -11,7 +11,7 @@ public class Recipient {
     @Column(name = "id")
     private int recipientId;
     @ManyToOne
-    @JoinColumn(name = "startdate")
+    @JoinColumn(name = "userid")
     private User user;
     @Column(name = "recipientname")
     private String recipientName;
