@@ -9,6 +9,6 @@ public class TransactionNotFoundException extends ResponseStatusException {
     }
 
     public static TransactionNotFoundException of(String reason) {
-        return new TransactionNotFoundException(HttpStatus.BAD_REQUEST, "No transaction(s) found ");
+        return new TransactionNotFoundException(HttpStatus.BAD_REQUEST, "No transaction(s) found " + reason);
     }
 }
